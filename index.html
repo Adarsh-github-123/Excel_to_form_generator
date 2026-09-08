@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FormFlow — Student Form Generator</title>
+<link rel="stylesheet" href="style.css" />
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div>
+      <div class="brand"><div class="logo">✦</div><div><h1>FormFlow</h1><p class="subtitle">Turn Excel rows into polished, ready-to-download forms.</p></div></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="toolbar">
+      <label class="upload" for="excelFile">＋ Upload Excel</label>
+      <input id="excelFile" type="file" accept=".xlsx,.xls,.csv" />
+      <button class="gray" id="sampleBtn">Use Sample Excel</button>
+      <div class="download-menu">
+        <button class="green" id="downloadAllBtn" disabled>Download Forms ▾</button>
+        <div class="menu" id="downloadMenu">
+          <button id="downloadPdf">Download all as PDF</button>
+          <button id="downloadIndividual">Download individual PDFs</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings">
+      <label for="formName">Form title</label>
+      <input id="formName" value="Student Form" placeholder="e.g. Student Form" />
+    </div>
+
+    <div class="status" id="status">Loading sample Excel data…</div>
+    <div class="tip">Expected columns: <strong>Name</strong>, <strong>Address</strong>, <strong>Phone Number</strong>, <strong>Email</strong>. Column matching is case-insensitive.</div>
+  </div>
+
+  <div class="panel">
+    <div class="section-head">
+      <h2>Generated Forms</h2>
+      <span class="badge" id="countBadge">0 forms</span>
+    </div>
+    <div id="forms" class="forms"></div>
+  </div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
