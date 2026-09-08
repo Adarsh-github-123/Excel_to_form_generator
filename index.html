@@ -10,60 +10,89 @@
   </head>
   <body>
     <div class="container">
-      <div class="hero">
-        <div>
-          <div class="brand">
-            <div class="logo">✦</div>
-            <div>
-              <h1>FormFlow</h1>
-              <p class="subtitle">
-                Turn Excel rows into polished, ready-to-download forms.
-              </p>
-            </div>
+      <header class="hero">
+        <div class="brand">
+          <div class="logo">✦</div>
+          <div>
+            <h1>FormFlow</h1>
+            <p class="subtitle">
+              Turn Excel rows into polished, ready-to-download forms.
+            </p>
           </div>
         </div>
-      </div>
+        <button
+          class="btn btn-secondary theme-toggle"
+          id="themeToggle"
+          aria-label="Toggle Theme"
+        >
+          <span class="theme-icon" id="themeIcon">🌙</span>
+          <span id="themeLabel">Dark</span>
+        </button>
+      </header>
 
-      <div class="panel">
-        <div class="toolbar">
-          <label class="upload" for="excelFile">＋ Upload Excel</label>
+      <main class="panel">
+        <div class="upload-zone" id="dropZone">
+          <svg
+            class="upload-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+          <div class="upload-text">
+            <strong>Drag and drop your file here</strong>
+            <span>or browse from your device</span>
+          </div>
+          <label class="upload-btn" for="excelFile">Choose File</label>
           <input id="excelFile" type="file" accept=".xlsx,.xls,.csv" />
-          <button class="gray" id="sampleBtn">Use Sample Excel</button>
+        </div>
+
+        <div class="toolbar">
+          <button class="btn btn-secondary" id="sampleBtn">
+            Use Sample Excel
+          </button>
+
+          <div class="settings">
+            <label for="formName">Form Title</label>
+            <input
+              id="formName"
+              value="Student Form"
+              placeholder="e.g. Student Form"
+            />
+          </div>
+
           <div class="download-menu">
-            <button class="green" id="downloadAllBtn" disabled>
-              Download Forms ▾
+            <button class="btn btn-success" id="downloadAllBtn" disabled>
+              Export Options ▾
             </button>
             <div class="menu" id="downloadMenu">
-              <button id="downloadPdf">Download all as PDF</button>
+              <button id="downloadPdf">Download all as single PDF</button>
               <button id="downloadIndividual">Download individual PDFs</button>
             </div>
           </div>
         </div>
 
-        <div class="settings">
-          <label for="formName">Form title</label>
-          <input
-            id="formName"
-            value="Student Form"
-            placeholder="e.g. Student Form"
-          />
-        </div>
-
-        <div class="status" id="status">Loading sample Excel data…</div>
+        <div class="status-bar" id="status">Loading sample Excel data…</div>
         <div class="tip">
-          Expected columns: <strong>Name</strong>, <strong>Address</strong>,
-          <strong>Phone Number</strong>, <strong>Email</strong>. Column matching
-          is case-insensitive.
+          <strong>Tip:</strong> Columns matched automatically:
+          <span>Name</span>, <span>Address</span>, <span>Phone Number</span>,
+          <span>Email</span>.
         </div>
-      </div>
+      </main>
 
-      <div class="panel">
+      <section class="panel">
         <div class="section-head">
           <h2>Generated Forms</h2>
           <span class="badge" id="countBadge">0 forms</span>
         </div>
         <div id="forms" class="forms"></div>
-      </div>
+      </section>
     </div>
 
     <script src="index.js"></script>
